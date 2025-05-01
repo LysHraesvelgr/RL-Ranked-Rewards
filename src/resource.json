@@ -1,14 +1,37 @@
 {
     "ranks": {
-        "bronze": 10,
-        "silver": 20,
-        "gold": 30,
-        "platinum": 40,
-        "diamond": 50,
-        "champion": 60,
-        "GC": 70,
-        "SSL": 80
+        "bronze": {
+            "value": 10,
+            "color": "#cd7f32"
+        },
+        "silver": {
+            "value": 20,
+            "color": "#c0c0c0"
+        },
+        "gold": {
+            "value": 30,
+            "color": "#ffd700"
+        },
+        "platinum": {
+            "value": 40,
+            "color": "#e5e4e2"
+        },
+        "diamond": {
+            "value": 50,
+            "color": "#0047ab"
+        },
+        "champion": {
+            "value": 60,
+            "color": "#7b68ee"
+        },
+        "GC": {
+            "value": 70,
+            "color": "#ff0000"
+        },
+        "SSL": {
+            "value": 80,
+            "color": "#ffffff"
+        }
     },
     "end-date": "2025-06-18"
-
 }

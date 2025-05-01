@@ -12,8 +12,8 @@ function App() {
   const ranks = Object.keys(resource.ranks);
 
   const calculateWins = () => {
-    const currentRankValue = resource.ranks[currentReward];
-    const targetRankValue = resource.ranks[targetReward];
+    const currentRankValue = resource.ranks[currentReward]?.value || 0;
+    const targetRankValue = resource.ranks[targetReward]?.value || 0;
     const remainingWins = targetRankValue - currentRankValue - currentWins;
 
     if (remainingWins <= 0) return { perWeek: 0, perDay: 0, perHour: 0 };
@@ -34,7 +34,19 @@ function App() {
     };
   };
 
+  const calculateDaysRemaining = () => {
+    const endDate = new Date(customEndDate);
+    const currentDate = new Date();
+    const timeDiff = endDate - currentDate;
+    return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+  };
+
+  const getRankStyle = (rank) => {
+    return { color: resource.ranks[rank]?.color || '#000000' };
+  };
+
   const { perWeek, perDay, perHour } = calculateWins();
+  const daysRemaining = calculateDaysRemaining();
 
   const resetEndDate = () => {
     setCustomEndDate(resource['end-date']);
@@ -47,9 +59,9 @@ function App() {
 
       <div className="input-group">
         <label>Current Reward Level:</label>
-        <select value={currentReward} onChange={(e) => setCurrentReward(e.target.value)}>
+        <select value={currentReward} onChange={(e) => setCurrentReward(e.target.value)} style={getRankStyle(currentReward)}>
           {ranks.map((rank) => (
-            <option key={rank} value={rank}>
+            <option key={rank} value={rank} style={getRankStyle(rank)}>
               {rank}
             </option>
           ))}
@@ -69,9 +81,9 @@ function App() {
 
       <div className="input-group">
         <label>Target Reward Level:</label>
-        <select value={targetReward} onChange={(e) => setTargetReward(e.target.value)}>
+        <select value={targetReward} onChange={(e) => setTargetReward(e.target.value)} style={getRankStyle(targetReward)}>
           {ranks.map((rank) => (
-            <option key={rank} value={rank}>
+            <option key={rank} value={rank} style={getRankStyle(rank)}>
               {rank}
             </option>
           ))}
@@ -96,6 +108,10 @@ function App() {
         <p>Wins per Week: {perWeek}</p>
         <p>Wins per Day: {perDay}</p>
         <p>Wins per Hour: {perHour}</p>
+      </div>
+
+      <div className="days-remaining">
+        <h3>Days Remaining: {daysRemaining}</h3>
       </div>
     </div>
   );
