@@ -1,0 +1,14 @@
+{
+    "ranks": {
+        "bronze": 10,
+        "silver": 20,
+        "gold": 30,
+        "platinum": 40,
+        "diamond": 50,
+        "champion": 60,
+        "GC": 70,
+        "SSL": 80
+    },
+    "end-date": "2025-06-18"
+
+}
