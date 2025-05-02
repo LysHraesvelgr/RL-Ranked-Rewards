@@ -16,8 +16,6 @@ function App() {
     const targetRankValue = resource.ranks[targetReward]?.value || 0;
     const remainingWins = targetRankValue - currentRankValue - currentWins;
 
-    if (remainingWins <= 0) return { perWeek: 0, perDay: 0, perHour: 0 };
-
     const endDate = new Date(customEndDate);
     const currentDate = new Date();
     const timeDiff = endDate - currentDate;
@@ -28,9 +26,10 @@ function App() {
     const perHour = perDay / 24;
 
     return {
-      perWeek: Math.ceil(perWeek),
-      perDay: Math.ceil(perDay),
-      perHour: Math.ceil(perHour),
+      remainingWins,
+      perWeek: perWeek < 0 ? Math.floor(perWeek) : Math.ceil(perWeek),
+      perDay: perDay < 0 ? Math.floor(perDay) : Math.ceil(perDay),
+      perHour: perHour < 0 ? Math.floor(perHour) : Math.ceil(perHour),
     };
   };
 
@@ -45,7 +44,7 @@ function App() {
     return { color: resource.ranks[rank]?.color || '#000000' };
   };
 
-  const { perWeek, perDay, perHour } = calculateWins();
+  const { remainingWins, perWeek, perDay, perHour } = calculateWins();
   const daysRemaining = calculateDaysRemaining();
 
   const resetEndDate = () => {
