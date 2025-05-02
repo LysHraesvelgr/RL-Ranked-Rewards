@@ -1,5 +1,9 @@
 {
     "ranks": {
+        "unranked": {
+            "value": 0,
+            "color": "#808080"
+        },
         "bronze": {
             "value": 10,
             "color": "#cd7f32"

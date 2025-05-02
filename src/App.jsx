@@ -27,9 +27,9 @@ function App() {
 
     return {
       remainingWins,
-      perWeek: perWeek < 0 ? Math.floor(perWeek) : Math.ceil(perWeek),
-      perDay: perDay < 0 ? Math.floor(perDay) : Math.ceil(perDay),
-      perHour: perHour < 0 ? Math.floor(perHour) : Math.ceil(perHour),
+      perWeek: perWeek > 0 ? Math.ceil(perWeek) : Math.floor(perWeek),
+      perDay: perDay > 0 ? Math.ceil(perDay) : Math.floor(perDay),
+      perHour: perHour > 0 ? Math.ceil(perHour) : Math.floor(perHour),
     };
   };
 
