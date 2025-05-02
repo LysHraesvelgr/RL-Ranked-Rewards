@@ -14,11 +14,11 @@
         },
         "platinum": {
             "value": 40,
-            "color": "#e5e4e2"
+            "color": "#95b4ff"
         },
         "diamond": {
             "value": 50,
-            "color": "#0047ab"
+            "color": "#0067cb"
         },
         "champion": {
             "value": 60,

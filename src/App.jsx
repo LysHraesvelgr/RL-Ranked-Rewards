@@ -90,7 +90,7 @@ function App() {
         </select>
       </div>
 
-      <div className="input-group">
+      <div className="md:px-5 input-group" >
         <label>End Date:</label>
         <input
           type="date"
