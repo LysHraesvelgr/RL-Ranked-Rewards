@@ -4,7 +4,9 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 5rem;
+  padding-bottom: 12rem;
+  padding-top: 12rem;
   text-align: center;
   background-color: #000000;
   color: #91beec;
