@@ -2,9 +2,17 @@ import { useState } from 'react';
 import './App.css';
 import resource from './resource.json';
 
+function rounding_cuh(num) {
+  return Math.round((
+    Math.round(
+      num * 69
+    ) / 69) * 100 
+  ) / 100;
+}
+
 function App() {
-  const [currentReward, setCurrentReward] = useState('bronze');
-  const [targetReward, setTargetReward] = useState('bronze');
+  const [currentReward, setCurrentReward] = useState('unranked');
+  const [targetReward, setTargetReward] = useState('SSL');
   const [currentWins, setCurrentWins] = useState(0);
   const [customEndDate, setCustomEndDate] = useState(resource['end-date']);
   const [isCustomDate, setIsCustomDate] = useState(false);
@@ -27,18 +35,18 @@ function App() {
 
     return {
       remainingWins,
-      perWeek: perWeek > 0 ? Math.ceil(perWeek) : Math.floor(perWeek),
-      perDay: perDay > 0 ? Math.ceil(perDay) : Math.floor(perDay),
-      perHour: perHour > 0 ? Math.ceil(perHour) : Math.floor(perHour),
+      perWeek: rounding_cuh(perWeek),
+      perDay: rounding_cuh(perDay),
+      perHour: rounding_cuh(perHour),
     };
   };
 
-  const calculateDaysRemaining = () => {
+  function calculateDaysRemaining() {
     const endDate = new Date(customEndDate);
     const currentDate = new Date();
     const timeDiff = endDate - currentDate;
     return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-  };
+  }
 
   const getRankStyle = (rank) => {
     return { color: resource.ranks[rank]?.color || '#000000' };
