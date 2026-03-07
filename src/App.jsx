@@ -11,8 +11,8 @@ function rounding_cuh(num) {
 }
 
 function App() {
-  const [currentReward, setCurrentReward] = useState('unranked');
-  const [targetReward, setTargetReward] = useState('SSL');
+  const [currentReward, setCurrentReward] = useState('champion');
+  const [targetReward, setTargetReward] = useState('GC');
   const [currentWins, setCurrentWins] = useState(0);
   const [customEndDate, setCustomEndDate] = useState(resource['end-date']);
   const [isCustomDate, setIsCustomDate] = useState(false);
